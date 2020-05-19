@@ -2,6 +2,11 @@ require 'spec_helper'
 
 # describe '#Song' do
 
+#   before(:each) do
+#     @album = Album.new({:name => "Giant Steps", :id => nil})
+#     @album.save()
+#   end
+
 #   describe('#==') do
 #     it("is the same song if it has the same attributes as another song") do
 #       song = Song.new({:name => "Naima", :album_id => @album.id, :id => nil})

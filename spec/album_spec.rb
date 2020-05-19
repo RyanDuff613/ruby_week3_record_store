@@ -2,6 +2,10 @@ require 'spec_helper'
 
 # describe '#Album' do
 
+#   before(:each) do
+
+#   end
+
 #   describe('.all') do
 #     it("returns an empty array when there are no albums") do
 #       expect(Album.all).to(eq([]))
@@ -29,13 +33,13 @@ require 'spec_helper'
 #     end
 #   end
 
-#   describe('#==') do
-#     it("is the same album if it has the same attributes as another album") do
-#       album = Album.new({:name => "Blue", :id => nil})
-#       album2 = Album.new({:name => "Blue", :id => nil})
-#       expect(album).to(eq(album2))
-#     end
-#   end
+  describe('#==') do
+    it("is the same album if it has the same attributes as another album") do
+      album = Album.new({:name => "Blue", :id => nil})
+      album2 = Album.new({:name => "Blue", :id => nil})
+      expect(album).to(eq(album2))
+    end
+  end
 
 #   describe('.find') do
 #     it("finds an album by id") do
