@@ -35,7 +35,7 @@ class Artist
 
   def delete 
     DB.exec("DELETE FROM artists WHERE id = #{@id};")
-    DB.exec("DELETE FROM songs WHERE artist_id = #{@id};")
+    # DB.exec("DELETE FROM songs WHERE artist_id = #{@id};")
   end
 
   def update(name)
