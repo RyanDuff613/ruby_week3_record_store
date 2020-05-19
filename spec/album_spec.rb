@@ -51,8 +51,8 @@ describe '#Album' do
     it("updates an album by id") do
       album = Album.new({:name => "A Love Supreme", :id => nil})
       album.save()
-      album.update("A Love Supreme")
-      expect(album.name).to(eq("A Love Supreme"))
+      album.update("Blue")
+      expect(album.name).to(eq("Blue"))
     end
   end
 

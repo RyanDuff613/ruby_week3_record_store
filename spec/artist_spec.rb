@@ -8,6 +8,16 @@ describe '#Artist' do
     end
   end
 
+  describe('#save') do
+    it("saves an artist") do
+      artist1 = Artist.new({:name => "John Coltrane", :id => nil})
+      artist1.save()
+      artist2 = Artist.new({:name => "Kanye", :id => nil})
+      artist2.save()
+      expect(Artist.all).to(eq([artist1, artist2]))
+    end
+  end
+
   describe('.clear') do
     it("clears all artists") do
       artist = Artist.new({:name => "John Coltrane", :id => nil})
@@ -16,6 +26,44 @@ describe '#Artist' do
       artist2.save()
       Artist.clear
       expect(Artist.all).to(eq([]))
+    end
+  end
+
+  describe('#==') do
+    it("is the same artist if it has the same name") do
+      artist1 = Artist.new({:name => "Coltrane", :id => nil})
+      artist2 = Artist.new({:name => "Coltrane", :id => nil})
+      expect(artist1).to(eq(artist2))
+    end
+  end
+
+  describe('.find') do
+    it("finds an artist by id") do
+      artist1 = Artist.new({:name => "Coltrane", :id => nil})
+      artist1.save()
+      artist2 = Artist.new({:name => "Kanye", :id => nil})
+      artist2.save()
+      expect(Artist.find(artist1.id)).to(eq(artist1))
+    end
+  end
+
+  describe('#update') do
+    it("takes a string as argument and uses instance id to change artist.name") do
+      artist = Artist.new({:name => "Coltrane", :id => nil})
+      artist.save()
+      artist.update("Kanye")
+      expect(artist.name).to(eq("Kanye"))
+    end
+  end
+
+  describe('#delete')do
+    it("deletes artist from db, deletes all songs by deleted artist") do
+      artist = Artist.new({:name => "Coltrane", :id => nil})
+      artist.save()
+      song = Song.new({:name => "Naima", :album_id => album_id, :id => nil})
+      song.save()
+      artist.delete()
+      expect(Song.find(song.id)).to(eq(nil))
     end
   end
 
