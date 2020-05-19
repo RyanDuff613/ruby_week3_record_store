@@ -58,11 +58,11 @@ describe '#Artist' do
     end
   end
 
-  describe('#update_name') do
-    it("takes a string argument to update an artists name") do
+  describe('#update') do
+    it("changes an artists name") do
       artist = Artist.new({:name => "Coltrane", :id => nil})
       artist.save()
-      artist.update_name("Kanye")
+      artist.update({:name => "Kanye"})
       expect(artist.name).to(eq("Kanye"))
     end
   end
