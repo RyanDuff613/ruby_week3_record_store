@@ -30,7 +30,11 @@ class Song
   end
 
   def self.find(id)
-    @@songs[id]
+    song = DB.exec("SELECT * FROM songs WHERE id = #{id};").first
+    name = song.fetch("name")
+    album_id = song.fetch("album_id").to_i
+    id = song.fetch("id").to_i
+    Song.new({:name => name, :album_id =>, :id => id})
   end
 
   def update(name, album_id)
