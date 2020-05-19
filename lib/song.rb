@@ -38,9 +38,9 @@ class Song
   end
 
   def update(name, album_id)
-    self.name = name
-    self.album_id = album_id
-    @@songs[self.id] = Song.new({:name => self.name, :album_id => self.album_id, :id => self.id})
+   @name = name
+   @album_id = album_id
+   DB.exec("UPDATE songs SET name = '#{@name}', album_id = #{@album_id} WHERE id = #{@id};")
   end
 
   def delete
