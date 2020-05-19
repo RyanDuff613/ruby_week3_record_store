@@ -67,16 +67,16 @@ describe '#Artist' do
     end
   end
 
-  # describe('#delete')do
-  #   it("deletes artist from db") do
-  #     artist = Artist.new({:name => "Coltrane", :id => nil})
-  #     artist.save()
-  #     # song = Song.new({:name => "Naima", :album_id => album.id, :id => nil})
-  #     # song.save()
-  #     artist.delete()
-  #     expect(Artist.find(artist.id)).to(eq(nil))
-  #   end
-  # end
+  describe('#delete')do
+    it("deletes artist from db") do
+      artist = Artist.new({:name => "Coltrane", :id => nil})
+      artist.save()
+      album = Album.new({:name => "A Love Supreme", :id => nil})
+      album.save()
+      artist.delete()
+      expect(Album.find(album.id)).to(eq(nil))
+    end
+  end
 
 
 end
