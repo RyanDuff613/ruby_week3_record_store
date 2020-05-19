@@ -38,6 +38,11 @@ get ('/albums/:id/edit') do
   erb(:edit_album)
 end
 
+get ('/artists') do
+  @artists = Artist.all
+  erb(:artists)
+end
+
 get('/artists/:id') do
   @artist = Artist.find(params[:id].to_i())
   erb(:artist)
