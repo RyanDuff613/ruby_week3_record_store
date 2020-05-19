@@ -48,24 +48,35 @@ describe '#Artist' do
   end
 
   describe('#update') do
-    it("takes a string as argument and uses instance id to change artist.name") do
+    it("adds an album to an artist") do
       artist = Artist.new({:name => "Coltrane", :id => nil})
       artist.save()
-      artist.update("Kanye")
+      album = Album.new({:name => "A Love Supreme", :id => nil})
+      album.save()
+      artist.update({:album_name => "A Love Supreme"})
+      expect(artist.albums).to(eq([album]))
+    end
+  end
+
+  describe('#update_name') do
+    it("takes a string argument to update an artists name") do
+      artist = Artist.new({:name => "Coltrane", :id => nil})
+      artist.save()
+      artist.update_name("Kanye")
       expect(artist.name).to(eq("Kanye"))
     end
   end
 
-  describe('#delete')do
-    it("deletes artist from db") do
-      artist = Artist.new({:name => "Coltrane", :id => nil})
-      artist.save()
-      # song = Song.new({:name => "Naima", :album_id => album_id, :id => nil})
-      # song.save()
-      artist_id = artist.id
-      artist.delete()
-      expect(Artist.find(artist_id)).to(eq(nil))
-    end
-  end
+  # describe('#delete')do
+  #   it("deletes artist from db") do
+  #     artist = Artist.new({:name => "Coltrane", :id => nil})
+  #     artist.save()
+  #     # song = Song.new({:name => "Naima", :album_id => album.id, :id => nil})
+  #     # song.save()
+  #     artist.delete()
+  #     expect(Artist.find(artist.id)).to(eq(nil))
+  #   end
+  # end
+
 
 end
