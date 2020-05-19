@@ -17,7 +17,7 @@ class Song
     songs = []
     returned_songs.each() do |song|
       name = song.fetch("name")
-      album_id = songs.fetch("album_id").to_i
+      album_id = song.fetch("album_id").to_i
       id = song.fetch("id").to_i
       songs.push(Song.new({:name => name, :album_id => album_id, :id => id}))
     end
