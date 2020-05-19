@@ -33,6 +33,18 @@ class Artist
     self.name() == artist_to_compare.name()
   end
 
+  def albums
+    albums = []
+    results = DB.exec("SELECT album_id FROM albums_artists WHERE artist_id = #{@id};")
+    results.each() do |result|
+      album_id = result.fetch("album_id").to_i()
+      album = DB.exec("SELECT * FROM albums WHERE id = #{album_id};")
+      name = album.first().fetch("name")
+      albums.push(Album.new({:name => name, :id => album_id}))
+    end
+    albums
+  end
+
   def delete 
     DB.exec("DELETE FROM artists WHERE id = #{@id};")
     # DB.exec("DELETE FROM songs WHERE artist_id = #{@id};")
