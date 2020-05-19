@@ -28,8 +28,7 @@ class Album
   end
 
   def self.clear
-    @@albums = {}
-    @@total_rows = 0
+    DB.exec("DELETE FROM albums *;")
   end
 
   def self.find(id)

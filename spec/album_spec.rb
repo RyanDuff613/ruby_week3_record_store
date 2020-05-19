@@ -22,16 +22,16 @@ require 'spec_helper'
 #     end
 #   end
 
-#   describe('.clear') do
-#     it("clears all albums") do
-#       album = Album.new({:name => "A Love Supreme", :id => nil})
-#       album.save()
-#       album2 = Album.new({:name => "Blue", :id => nil})
-#       album2.save()
-#       Album.clear
-#       expect(Album.all).to(eq([]))
-#     end
-#   end
+  describe('.clear') do
+    it("clears all albums") do
+      album = Album.new({:name => "A Love Supreme", :id => nil})
+      album.save()
+      album2 = Album.new({:name => "Blue", :id => nil})
+      album2.save()
+      Album.clear
+      expect(Album.all).to(eq([]))
+    end
+  end
 
   describe('#==') do
     it("is the same album if it has the same attributes as another album") do
