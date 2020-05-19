@@ -8,12 +8,12 @@ class Artist
   end
 
   def self.all
-    returned_artists = DB.exec("SELECT * FROM albums;")
+    returned_artists = DB.exec("SELECT * FROM artists;")
     artists = []
     returned_artists.each() do |artist|
       name = artist.fetch("name")
       id = artist.fetch("id").to_i
-      albums.push(Artist.new({:name => name, :id => id}))
+      artists.push(Artist.new({:name => name, :id => id}))
     end
     artists
   end
