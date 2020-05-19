@@ -25,7 +25,8 @@ class Song
   end
 
   def save
-    @@songs[self.id] = Song.new({:name => self.name, :album_id => self.album_id, :id => self.id})
+    result = DB.exec("INSERT INTO songs (name, album_id) VALUES ('#{@name}', #{@album_id}) RETURNING id;")
+    @id = result.first().fetch("id").to_i
   end
 
   def self.find(id)
