@@ -1,15 +1,13 @@
 <h1> All Sales Vinyl</h1>
 
-<h3>Artist with available albums</h3>
+<h3>Artists with available albums</h3>
 
 <% if @artists.any? %>
   <ul>
-    <% artists.each do |artist| %>
+    <% @artists.each do |artist| %>
       <li><a href="/artist/<%= artist.id %>"<%= artist.name %></a></li>
     <% end %>
   </ul>
 <% else %>
   <p>There are no artists to display</p>
 <% end %>
-
-<a href="/artists/new">Add a new artist</a>
