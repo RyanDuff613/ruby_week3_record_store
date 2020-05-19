@@ -34,7 +34,7 @@ class Song
     name = song.fetch("name")
     album_id = song.fetch("album_id").to_i
     id = song.fetch("id").to_i
-    Song.new({:name => name, :album_id =>, :id => id})
+    Song.new({:name => name, :album_id => album_id, :id => id})
   end
 
   def update(name, album_id)
