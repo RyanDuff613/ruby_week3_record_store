@@ -2,10 +2,6 @@ require 'spec_helper'
 
 describe '#Album' do
 
-  before(:each) do
-
-  end
-
   describe('.all') do
     it("returns an empty array when there are no albums") do
       expect(Album.all).to(eq([]))
