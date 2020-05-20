@@ -5,7 +5,7 @@
 <% if @artists.any? %>
   <ul>
     <% @artists.each do |artist| %>
-      <li><a href="/artist/<%= artist.id %>"<%= artist.name %></a></li>
+      <li><a href="/artists/<%= artist.id %>"><%= artist.name %></a></li>
     <% end %>
   </ul>
 <% else %>
