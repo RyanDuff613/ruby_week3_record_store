@@ -13,6 +13,12 @@ get('/') do
   redirect to('/albums')
 end
 
+get('/index') do
+  @albums = Album.all
+  @artists = Artist.all
+  erb(:index)
+end
+
 get('/albums') do
   @albums = Album.all
   erb(:albums)

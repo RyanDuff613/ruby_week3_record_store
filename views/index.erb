@@ -1,0 +1,26 @@
+<h1> All Sales Vinyl</h1>
+<h2>INDEX</h2>
+
+<h3>Available Records</h3>
+
+<% if @albums.any? %>
+  <ul>
+    <% @albums.each do |album| %>
+      <li><a href="/albums/<%= album.id %>">Record Name:<%= album.name %></a></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are currently no records to display.</p>
+<% end %>
+
+<h3>Artists with available albums</h3>
+
+<% if @artists.any? %>
+  <ul>
+    <% @artists.each do |artist| %>
+      <li><a href="/artists/<%= artist.id %>">Artist Name: <%= artist.name %></a></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are no artists to display</p>
+<% end %>
