@@ -1,25 +1,31 @@
-<h2>Artist Name: <%= @album.name %></h2>
+<h2>Artist Name: <%= @artist.name %></h2>
 
 <h3>Artist Albums</h3>
 
   <% if @artist.albums %>
     <ul>
       <% @artist.albums.each do |album| %>
-        <li><a href="/albums/<%= album.id %>"<%= album.name %></a></li>
+        <li><a href="/albums/<%= album.id %>"><%= album.name %></a></li>
       <% end %>
     </ul>
   <% else %>
     <p>No albums associated with this artist.</p>
   <% end %>
 
-<h4>Add an album:</h4>
-
-<form action="albums/<%= @album.id %>" method="post">
+<h4>Update Artist Name</h4>
+<form action="/artists/<%= @artist.id %>" method="post">
   <div class="form-group">
-    <label for="album_name">Album Name:</label>
-    <input id="album_name" name="album_name" class="form-control" type="text">
+    <input name="_method" type="hidden" value="patch">
+    <label for="name">New Artist Name:</label>
+    <input id="name" name="name" class="form-control" type="text">
   </div>
-  <button type="submit" class="btn">Add Album</button>
+  <button type="submit" class="btn">Rename Artist</button>
+</form>
+
+<h4>Delete Artist</h4>
+<form action="/artists/<%= @artist.id() %>" method="post">
+  <input name="_method" type="hidden" value="delete">
+  <button type="submit">Delete Artist</button>
 </form>
 
 <p><a href="/artists">Return to Artist list</a></p>

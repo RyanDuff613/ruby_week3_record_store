@@ -91,18 +91,18 @@ get('/artists/:id') do
   erb(:artist)
 end
 
-post('/artists') do
-  name = params[:artist_name]
-  artist = Artist.new({:name => name, :id => nil})
+post('/artists/:id') do
+  new_name = params[:new_name]
+  artist = Artist.new({:name => new_name, :id => nil})
   artist.save()
   redirect to('/artists')
 end
 
-# patch('/artists/:id') do
-#   @artist = Artist.find(params[:id].to_i())
-#   @artist.update(params[:name])
-#   redirect to('/artists')
-# end
+patch('/artists/:id') do
+  @artist = Artist.find(params[:id].to_i())
+  @artist.update(params)
+  redirect to('/artists')
+end
 
 # delete('/artists/:id') do
 #   @artist = Artist.find(params[:id].to_i())
