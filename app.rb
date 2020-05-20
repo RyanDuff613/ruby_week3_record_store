@@ -82,17 +82,21 @@ get ('/artists') do
   erb(:artists)
 end
 
+get ('/artists/new') do
+  erb(:new_artist)
+end
+
 # get('/artists/:id') do
 #   @artist = Artist.find(params[:id].to_i())
 #   erb(:artist)
 # end
 
-# post('/artists') do
-#   name = params[:artist_name]
-#   artist = Artist.new({:name => name, :id => nil})
-#   artist.save()
-#   redirect to('/artists')
-# end
+post('/artists') do
+  # name = params[:artist_name]
+  artist = Artist.new({:name => name, :id => nil})
+  artist.save()
+  redirect to('/artists')
+end
 
 # patch('/artists/:id') do
 #   @artist = Artist.find(params[:id].to_i())
